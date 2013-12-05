@@ -56,6 +56,9 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Utils, Version=1.2.2.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -164,6 +167,8 @@
     <Compile Include="setup.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Translator\Translation.vb" />
+    <Compile Include="Translator\Translator.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -205,6 +210,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MediaPortal\language\myTvNiveauChecker\de.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="MediaPortal\Skin\Titan\Media\icon_myTvNiveauChecker.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -213,6 +221,7 @@
     </Content>
     <Content Include="MediaPortal\Skin\Titan\mytvFullScreen.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <EmbeddedResource Include="ConfigIcons\Config_disable.png" />
   </ItemGroup>
@@ -221,7 +230,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>start xcopy.exe "$(TargetDir)$(TargetFileName)" "R:\Downloads\MediaPortal MyNiveauChecker\" /Y</PostBuildEvent>
+    <PostBuildEvent>start xcopy.exe "$(TargetDir)$(TargetFileName)" "R:\Downloads\MediaPortal MyNiveauChecker\" /Y
+start xcopy "$(TargetDir)\MediaPortal\language\*.*" "R:\Downloads\MediaPortal MyNiveauChecker\MediaPortal_Data\language\" /Y /E
+start xcopy "$(TargetDir)\MediaPortal\Skin\*.*" "R:\Downloads\MediaPortal MyNiveauChecker\MediaPortal_Data\Skin\" /Y /E
+start xcopy "$(TargetDir)\MediaPortal\thumbs\*.*" "R:\Downloads\MediaPortal MyNiveauChecker\MediaPortal_Data\thumbs\" /Y /E</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

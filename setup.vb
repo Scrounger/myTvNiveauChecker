@@ -89,6 +89,10 @@ Public Class setup
 
         CB_Action.DataSource = System.Enum.GetValues(GetType(Action.ActionType))
         CB_Action.Text = mySettings.BtnDeactivate
+
+        CB_ActionAdd.DataSource = System.Enum.GetValues(GetType(Action.ActionType))
+        CB_ActionAdd.Text = mySettings.BtnAdd
+
         Check_Debug.Checked = mySettings.debug
 
         Check_ShowDlg.Checked = mySettings.dlgMessageShow
@@ -146,14 +150,21 @@ Public Class setup
         mySettings.dlgMessage = TB_Message.Text
         mySettings.delay = Num_Timer.Value
         mySettings.BtnDeactivate = CB_Action.Text
+        mySettings.BtnAdd = CB_ActionAdd.Text
         mySettings.debug = Check_Debug.Checked
         mySettings.dlgMessageShow = Check_ShowDlg.Checked
 
         mySettings.Save()
+        Me.Close()
+
     End Sub
 
     Private Sub Check_ShowDlg_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Check_ShowDlg.CheckedChanged
         mySettings.dlgMessageShow = Check_ShowDlg.Checked
         TB_Message.Enabled = mySettings.dlgMessageShow
+    End Sub
+
+    Private Sub Check_Debug_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Check_Debug.CheckedChanged
+
     End Sub
 End Class

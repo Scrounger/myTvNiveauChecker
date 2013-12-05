@@ -11,6 +11,7 @@ Imports TvDatabase
 
 Imports myTvNiveauChecker.MediaPortal.TvDatabase
 Imports myTvNiveauChecker.Settings
+Imports myTvNiveauChecker.Language
 Imports System.Reflection
 
 <PluginIcons("myTvNiveauChecker.Config.png", "myTvNiveauChecker.Config_disable.png")> _
@@ -87,20 +88,22 @@ Public Class myTvNiveauChecker
 
     Public Sub Start() Implements IPlugin.Start
         MyLog.BackupLogFiles()
-        MyLog.Info("myTvNiveauChecker started")
+        MyLog.Info("")
+        MyLog.Info("----------------myTvNiveauChecker started------------------")
+        Translator.TranslateSkin()
+        GUIPropertyManager.SetProperty("#myTvNiveauChecker.active", False)
+        GUIPropertyManager.SetProperty("#myTvNiveauChecker.CountDown", 0)
 
         'Event Handler (channel change, tv started)
         AddHandler g_Player.TVChannelChanged, New g_Player.TVChannelChangeHandler(AddressOf Event_TvChannelChange)
         AddHandler g_Player.PlayBackStarted, New g_Player.StartedHandler(AddressOf Event_TvStarted)
 
-
         'Event Handler key press
         AddHandler GUIWindowManager.OnNewAction, AddressOf Event_GuiAction
 
+       
         'AddHandler GUIWindowManager.OnNewAction, New GUIWindowManager.PostRenderActionHandler(AddressOf Event_Action)
         MyLog.Info("handler for g_player tv events registered")
-
-
     End Sub
 
     Public Sub [Stop]() Implements IPlugin.Stop
@@ -113,16 +116,15 @@ Public Class myTvNiveauChecker
 
 #Region "Gui Events"
     Sub Event_TvStarted(ByVal type As g_Player.MediaType, ByVal filename As String)
-        If g_Player.IsTV = True And g_Player.IsTVRecording = False Then
-            MyLog.Info("")
-            MyLog.Info("----------------myTvNiveauChecker started------------------")
-            MyLog.Info("Version: " & Assembly.GetExecutingAssembly().GetName().Version.ToString)
+        If g_Player.IsTV = True And g_Player.IsTVRecording = False Then     
             mySettings.Load(True)
             CheckTvDatabaseTable()
+            MyLog.Info("Version: " & Assembly.GetExecutingAssembly().GetName().Version.ToString)
 
+            _deactivated = False
             _idCurrentProgram = 0
-            getCurrentProgram()
-            StartStopTimer(True)
+
+            TvEventTimer(True)
         End If
     End Sub
     Private Sub Event_TvChannelChange()
@@ -137,32 +139,43 @@ Public Class myTvNiveauChecker
 
     Private Sub Event_GuiAction(ByVal action As Global.MediaPortal.GUI.Library.Action)
         'myTvNiveauChecker aktivieren / deaktivieren, by user key press (key defined in setup)
+        '1/ 602
 
-        If g_Player.IsTV = True And g_Player.IsTVRecording = False Then
-            Select Case action.wID
-                Case CType([Enum].Parse(GetType(Action.ActionType), mySettings.BtnDeactivate), Action.ActionType)
-                    If _deactivated = False Then
-                        _deactivated = True
-                        MyLog.Info("myTvNiveauChecker deactivated")
+        If GUIWindowManager.ActiveWindow = 1 Or GUIWindowManager.ActiveWindow = 602 Then
+            If g_Player.IsTV = True And g_Player.IsTVRecording = False Then
+                Select Case action.wID
+                    Case CType([Enum].Parse(GetType(Action.ActionType), mySettings.BtnDeactivate), Action.ActionType)
+                        If _deactivated = False Then
+                            _deactivated = True
+                            MyLog.Info("myTvNiveauChecker deactivated")
 
-                        Try
-                            CheckTimer(False)
-                        Catch ex As Exception
-                        End Try
+                            Try
+                                CheckTimer(False)
+                            Catch ex As Exception
+                            End Try
 
-                        MP_Notify("deactivated")
-                    Else
-                        _deactivated = False
-                        MyLog.Info("myTvNiveauChecker activated")
-                        CheckTimer(True)
-                        MP_Notify("activated")
-                    End If
-            End Select
+                            MP_Notify(Translation.deactivated)
+                        Else
+                            _deactivated = False
+                            MyLog.Info("myTvNiveauChecker activated")
+                            CheckTimer(True)
+                            MP_Notify(Translation.activated)
+                        End If
+                    Case CType([Enum].Parse(GetType(Action.ActionType), mySettings.BtnAdd), Action.ActionType)
+                        If Not _CountDownTimer.Enabled = True Then
+                            Try
+                                Dim _test As myTNC = myTNC.Retrieve(_CurrentProgram.Title)
+                            Catch ex As Exception
+                                MsgBox("add to table?")
+                            End Try
+                        End If
+
+                End Select
+            End If
         End If
+
     End Sub
 #End Region
-
-
 
     Private Sub getCurrentProgram()
         Dim _userList As New List(Of IUser)
@@ -196,11 +209,14 @@ Public Class myTvNiveauChecker
         End If
     End Sub
 
-    Private Sub StartStopTimer(ByVal startNow As Boolean)
-        'timer der prüft ob sich das Progran geändert hat, also wechsel des Program auf gleichem Sender
+    Private Sub TvEventTimer(ByVal startNow As Boolean)
+        'timer der prüft ob sich das Progran geändert hat, also wechsel des Program auf gleichem Sender        
         If startNow Then
             If _stateTimer Is Nothing Then
-                MyLog.Debug("TvEvent timer started...")
+                MyLog.Info("TvEvent timer started...")
+                getCurrentProgram()
+
+
                 _stateTimer = New System.Timers.Timer()
                 AddHandler _stateTimer.Elapsed, New ElapsedEventHandler(AddressOf programChanged)
                 _stateTimer.Interval = 1000
@@ -212,11 +228,18 @@ Public Class myTvNiveauChecker
             _stateTimer.Enabled = True
 
         Else
-            _stateTimer.Enabled = False
-            _stateTimer.[Stop]()
             _idCurrentProgram = 0
             _CurrentProgram = Nothing
-            MyLog.Debug("TvEvent timer stopped")
+
+            _stateTimer.Enabled = False
+            _stateTimer.[Stop]()
+
+            'Event Handler key press
+            'RemoveHandler GUIWindowManager.OnNewAction, AddressOf Event_GuiAction
+            _stateTimer = Nothing
+
+            MyLog.Info("TvEvent timer stopped")
+            MyLog.Info("-------------------------------------------------------")
         End If
     End Sub
     Private Sub programChanged()
@@ -225,14 +248,21 @@ Public Class myTvNiveauChecker
                 getCurrentProgram()
             End If
         Else
-            'Falls Player nicht mehr TV, dann timer beenden
-            StartStopTimer(False)
+            'Falls Player nicht mehr TV, dann alle timer beenden
+            Try
+                CheckTimer(False)
+            Catch ex As Exception
+            End Try
+
+            TvEventTimer(False)
         End If
     End Sub
 
     Private Sub CheckTimer(ByVal startNow As Boolean)
         'CountDown Timer, wird nur gestartet wenn program blacklisted ist!
         If startNow And _deactivated = False Then
+
+            MyLog.Debug("myTvNiveauChecker CheckTimer started!")
 
             'wenn in myTNC gefunden, dann Countdown starten
             Dim _myTncList As List(Of myTNC) = myTNC.ListAll
@@ -264,12 +294,13 @@ Public Class myTvNiveauChecker
 
             _CountDown = 0
             GUIPropertyManager.SetProperty("#myTvNiveauChecker.active", False)
-            MyLog.Debug("myTvNiveauChecker Countdown stopped!")
+
+            MyLog.Debug("myTvNiveauChecker CheckTimer stopped!")
         End If
     End Sub
 
     Private Sub blacklisted()
-        MyLog.Info("{0}: blacklisted!", _CurrentProgram.Title)
+        MyLog.Warn("{0}: blacklisted!", _CurrentProgram.Title)
 
         'skin properties ausgeben
         GUIPropertyManager.SetProperty("#myTvNiveauChecker.active", True)
@@ -304,6 +335,7 @@ Public Class myTvNiveauChecker
     Private Sub countDownPropertiy()
         GUIPropertyManager.SetProperty("#myTvNiveauChecker.CountDown", _CountDown)
         _CountDown = _CountDown - 1
+
     End Sub
 
     Private Sub StopPlayer()
@@ -329,13 +361,15 @@ Public Class myTvNiveauChecker
                 Gentle.Framework.Broker.Execute("CREATE TABLE mptvdb.myTNC ( `Name` varchar(255) NOT NULL,  `matchRule` varchar(45),  PRIMARY KEY (`Name`))")
                 MyLog.Info("myTNC table created")
             Catch ex As Exception
+                MyLog.Warn(ex.Message)
             End Try
         Else
             'MSSQL
             Try
-                Gentle.Framework.Broker.Execute("CREATE TABLE [mptvdb].[dbo].[moveriesmapping] ( Name varchar(255) NOT NULL,  matchingRule varchar(45),  PRIMARY KEY (Name))")
+                Gentle.Framework.Broker.Execute("CREATE TABLE [mptvdb].[dbo].[myTNC] ( Name varchar(255) NOT NULL,  matchingRule varchar(45),  PRIMARY KEY (Name))")
                 MyLog.Info("myTNC table created")
             Catch ex As Exception
+                MyLog.Warn(ex.Message)
             End Try
         End If
     End Sub

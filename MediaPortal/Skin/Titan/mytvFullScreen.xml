@@ -441,19 +441,9 @@
 			<visible>yes</visible>
 		</control>
 
+ 
 
-
-    <!--<control>
-      <description>myTvNiveauChecker Test</description>
-      <type>label</type>
-      <id>1</id>
-      <posX>300</posX>
-      <posY>300</posY>
-      <label>#myTvNiveauChecker.active</label>
-      <align>right</align>
-      <font>font11</font>
-      <textcolor>ff00b7ff</textcolor>
-    </control>-->
+    <!--myTvNiveauChecker mod-->
 
     <control>
       <description>myTvNiveauChecker BG</description>
@@ -504,7 +494,7 @@
       <posX>628</posX>
       <posY>540</posY>
       <width>663</width>
-      <label>Aufgrund des mangelnden Niveaus</label>
+      <label>#myTvNiveauChecker.Translation.line1</label>
       <align>center</align>
       <font>TitanLight12</font>
       <textcolor>white</textcolor>
@@ -518,7 +508,7 @@
       <posX>628</posX>
       <posY>580</posY>
       <width>663</width>
-      <label>wird diese Sendung beendet</label>
+      <label>#myTvNiveauChecker.Translation.line2</label>
       <align>center</align>
       <font>TitanLight12</font>
       <textcolor>white</textcolor>
@@ -533,13 +523,26 @@
       <posX>628</posX>
       <posY>620</posY>
       <width>663</width>
-      <label>in #myTvNiveauChecker.CountDown sekunden</label>
+      <label>#myTvNiveauChecker.Translation.prefixCountDown #myTvNiveauChecker.CountDown #myTvNiveauChecker.Translation.suffixCountDown</label>
       <align>center</align>
       <font>TitanLight12</font>
       <textcolor>white</textcolor>
       <animation effect="fade" time="500">WindowOpen</animation>
       <visible>string.equals(#myTvNiveauChecker.active,True)</visible>
     </control>
+
+    <!--<control>
+      <description>myTvNiveauChecker Test</description>
+      <type>label</type>
+      <id>1</id>
+      <posX>300</posX>
+      <posY>300</posY>
+      <label>#myTvNiveauChecker.active</label>
+      <align>right</align>
+      <font>font11</font>
+      <textcolor>ff00b7ff</textcolor>
+    </control>-->
+    
     
   </controls>
 </window>

@@ -46,6 +46,16 @@ Namespace Settings
             End Set
         End Property
 
+        Private Shared m_BtnAdd As String = "ACTION_REMOTE_RED_BUTTON"
+        Public Shared Property BtnAdd As String
+            Get
+                Return m_BtnAdd
+            End Get
+            Set(ByVal value As String)
+                m_BtnAdd = value
+            End Set
+        End Property
+
         Private Shared m_debug As Boolean = False
         Public Shared Property debug As Boolean
             Get
@@ -86,11 +96,11 @@ Namespace Settings
                         prop.SetValue(clstype, CType(_value, Date), Nothing)
                 End Select
                 If log = True Then
-                    MyLog.Info("mySettings: {0}: {1}", _localPrefix & prop.Name, Space((_maxlenghtLog + 5) - prop.Name.Length) & prop.GetValue(clstype, Nothing).ToString)
+                    MyLog.Debug("mySettings: {0}: {1}", _localPrefix & prop.Name, Space((_maxlenghtLog + 5) - prop.Name.Length) & prop.GetValue(clstype, Nothing).ToString)
                 End If
             Next
             If log = True Then
-                MyLog.Info("-------------------------------------------------------")
+                MyLog.Debug("-------------------------------------------------------")
             End If
         End Sub
         Public Shared Sub Save()

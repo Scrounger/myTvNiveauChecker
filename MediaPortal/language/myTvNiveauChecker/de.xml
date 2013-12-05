@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- German -->
+<!-- Note: German is the fallback for any strings not found in other languages -->
+<strings>
+
+  <string Field="Record">Aufnehmen</string>
+ 
+  
+  
+</strings>
