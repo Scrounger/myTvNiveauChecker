@@ -111,12 +111,9 @@ Public Class myTvNiveauChecker
     End Sub
 #End Region
 
-
-  
-
 #Region "Gui Events"
     Sub Event_TvStarted(ByVal type As g_Player.MediaType, ByVal filename As String)
-        If g_Player.IsTV = True And g_Player.IsTVRecording = False Then     
+        If g_Player.IsTV = True And g_Player.IsTVRecording = False Then
             mySettings.Load(True)
             CheckTvDatabaseTable()
             MyLog.Info("Version: " & Assembly.GetExecutingAssembly().GetName().Version.ToString)
@@ -127,22 +124,57 @@ Public Class myTvNiveauChecker
             TvEventTimer(True)
         End If
     End Sub
+
+    Private _ChannelChangeCounter As Integer = 1
     Private Sub Event_TvChannelChange()
-        If g_Player.IsTV = True And g_Player.IsTVRecording = False Then
-            Try
-                CheckTimer(False)
-            Catch ex As Exception
-            End Try
-            getCurrentProgram()
+        If _ChannelChangeCounter = 1 Then
+            'GUIPropertyManager.SetProperty("#myTvNiveauChecker.active", False)
+            _ChannelChangeCounter = 2
+        Else
+            _ChannelChangeCounter = 1
+            If g_Player.IsTV = True And g_Player.IsTVRecording = False Then
+                Try
+                    CheckTimer(False)
+                Catch ex As Exception
+                End Try
+                getCurrentProgram()
+            End If
         End If
     End Sub
 
     Private Sub Event_GuiAction(ByVal action As Global.MediaPortal.GUI.Library.Action)
         'myTvNiveauChecker aktivieren / deaktivieren, by user key press (key defined in setup)
-        '1/ 602
+        'nur aktiv in TvHomeServer & Fullscreen (window ids 1/ 602)
 
         If GUIWindowManager.ActiveWindow = 1 Or GUIWindowManager.ActiveWindow = 602 Then
             If g_Player.IsTV = True And g_Player.IsTVRecording = False Then
+
+                'Window spezifische tasten abfangen um prop zu reseten (sonst wird das erst nach kanal wechsel ausgeführt)
+                If GUIWindowManager.ActiveWindow = 1 Then
+                    Select Case action.wID
+                        Case Is = action.ActionType.ACTION_PAGE_UP
+                            GUIPropertyManager.SetProperty("#myTvNiveauChecker.active", False)
+                        Case Is = action.ActionType.ACTION_PAGE_DOWN
+                            GUIPropertyManager.SetProperty("#myTvNiveauChecker.active", False)
+                        Case Is = action.ActionType.ACTION_STOP
+                            GUIPropertyManager.SetProperty("#myTvNiveauChecker.active", False)
+                            TvEventTimer(False)
+                    End Select
+                End If
+
+                If GUIWindowManager.ActiveWindow = 602 Then
+                    Select Case action.wID
+                        Case Is = action.ActionType.ACTION_STOP
+                            GUIPropertyManager.SetProperty("#myTvNiveauChecker.active", False)
+                            TvEventTimer(False)
+                        Case Is = action.ActionType.ACTION_NEXT_CHANNEL
+                            GUIPropertyManager.SetProperty("#myTvNiveauChecker.active", False)
+                        Case Is = action.ActionType.ACTION_PREV_CHANNEL
+                            GUIPropertyManager.SetProperty("#myTvNiveauChecker.active", False)
+                    End Select
+                End If
+
+                'myTvNiveauChecker actions
                 Select Case action.wID
                     Case CType([Enum].Parse(GetType(Action.ActionType), mySettings.BtnDeactivate), Action.ActionType)
                         If _deactivated = False Then
@@ -169,8 +201,9 @@ Public Class myTvNiveauChecker
                                 MsgBox("add to table?")
                             End Try
                         End If
-
                 End Select
+
+               
             End If
         End If
 
@@ -231,6 +264,11 @@ Public Class myTvNiveauChecker
             _idCurrentProgram = 0
             _CurrentProgram = Nothing
 
+            Try
+                CheckTimer(False)
+            Catch ex As Exception
+            End Try
+
             _stateTimer.Enabled = False
             _stateTimer.[Stop]()
 
@@ -249,11 +287,6 @@ Public Class myTvNiveauChecker
             End If
         Else
             'Falls Player nicht mehr TV, dann alle timer beenden
-            Try
-                CheckTimer(False)
-            Catch ex As Exception
-            End Try
-
             TvEventTimer(False)
         End If
     End Sub
