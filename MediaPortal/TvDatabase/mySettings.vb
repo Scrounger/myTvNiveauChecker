@@ -26,7 +26,7 @@ Namespace Settings
             End Set
         End Property
 
-        Private Shared m_delay As Integer = 10
+        Private Shared m_delay As Integer = 20
         Public Shared Property delay As Integer
             Get
                 Return m_delay

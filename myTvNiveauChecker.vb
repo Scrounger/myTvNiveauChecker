@@ -55,7 +55,7 @@ Public Class myTvNiveauChecker
     End Function
 
     Public Function Description() As String Implements ISetupForm.Description
-        Return "Describtion"
+        Return "myTvNiveauChecker Version: " & Assembly.GetExecutingAssembly().GetName().Version.ToString
     End Function
 
     Public Function GetHome(ByRef strButtonText As String, ByRef strButtonImage As String, ByRef strButtonImageFocus As String, ByRef strPictureImage As String) As Boolean Implements ISetupForm.GetHome
@@ -101,7 +101,7 @@ Public Class myTvNiveauChecker
         'Event Handler key press
         AddHandler GUIWindowManager.OnNewAction, AddressOf Event_GuiAction
 
-       
+
         'AddHandler GUIWindowManager.OnNewAction, New GUIWindowManager.PostRenderActionHandler(AddressOf Event_Action)
         MyLog.Info("handler for g_player tv events registered")
     End Sub
@@ -194,18 +194,34 @@ Public Class myTvNiveauChecker
                             MP_Notify(Translation.activated)
                         End If
                     Case CType([Enum].Parse(GetType(Action.ActionType), mySettings.BtnAdd), Action.ActionType)
-                        If Not _CountDownTimer.Enabled = True Then
-                            Try
-                                Dim _test As myTNC = myTNC.Retrieve(_CurrentProgram.Title)
-                                MP_Notify(Translation.stilladded)
-                            Catch ex As Exception
-                                MsgBox("add to table?")
+                        Try
+                            Dim _test As myTNC = myTNC.Retrieve(_CurrentProgram.Title)
+                            MP_Notify(Translation.stilladded)
+                        Catch ex As Exception
+                            'Dialog fragen ob zur db hinzufügen
+                            Dim dlgContext As GUIDialogPlayStop = CType(GUIWindowManager.GetWindow(CType(GUIWindow.Window.WINDOW_DIALOG_PLAY_STOP, Integer)), GUIDialogPlayStop)
+                            dlgContext.Reset()
 
-                            End Try
-                        End If
+                            'ContextMenu Layout
+                            dlgContext.SetHeading("myTvNiveauChecker")
+                            dlgContext.SetLine(1, _CurrentProgram.Title)
+                            dlgContext.SetLine(2, Translation.addtoBlacklist)
+                            dlgContext.SetDefaultToStop(False)
+
+                            dlgContext.DoModal(GUIWindowManager.ActiveWindow)
+                            If dlgContext.IsStopConfirmed = True Then
+                                Dim _add As New myTNC(_CurrentProgram.Title)
+                                _add.matchRule = myTvNiveauChecker.Match.exact.ToString
+                                _add.Persist()
+                                MyLog.Info("added {0} to blacklist", _CurrentProgram.Title)
+
+                                CheckTimer(True)
+
+                            End If
+
+                        End Try
                 End Select
 
-               
             End If
         End If
 
@@ -297,8 +313,6 @@ Public Class myTvNiveauChecker
         'CountDown Timer, wird nur gestartet wenn program blacklisted ist!
         If startNow And _deactivated = False Then
 
-            MyLog.Debug("myTvNiveauChecker CheckTimer started!")
-
             'wenn in myTNC gefunden, dann Countdown starten
             Dim _myTncList As List(Of myTNC) = myTNC.ListAll
             If _myTncList.FindAll(Function(x) InStr(_CurrentProgram.Title, x.name) > 0).Count > 0 Then
@@ -336,6 +350,8 @@ Public Class myTvNiveauChecker
 
     Private Sub blacklisted()
         MyLog.Warn("{0}: blacklisted!", _CurrentProgram.Title)
+
+        MyLog.Debug("myTvNiveauChecker CheckTimer started!")
 
         'skin properties ausgeben
         GUIPropertyManager.SetProperty("#myTvNiveauChecker.active", True)
