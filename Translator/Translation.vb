@@ -15,7 +15,7 @@ Imports Gentle.Framework
         Public Shared line1 = "Aufgrund des mangelnden Niveaus"
         Public Shared line2 = "wird diese Sendung"
         Public Shared prefixCountDown = "in"
-        Public Shared suffixCountDown = "sekunden beendet"
+        Public Shared suffixCountDown = "Sekunden beendet"
         Public Shared stilladded = "bereits hinzugefügt!"
         Public Shared addtoBlacklist = "zur blacklist hinzufügen?"
 

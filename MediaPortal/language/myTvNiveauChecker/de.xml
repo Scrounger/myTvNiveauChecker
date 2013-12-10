@@ -3,8 +3,14 @@
 <!-- Note: German is the fallback for any strings not found in other languages -->
 <strings>
 
-  <string Field="Record">Aufnehmen</string>
- 
+  <string Field="activated">aktiviert</string>
+  <string Field="deactivated">deaktiviert</string>
+  <string Field="line1">Aufgrund des mangelnden Niveaus</string>
+  <string Field="line2">wird diese Sendung</string>
+  <string Field="prefixCountDown">in</string>
+  <string Field="suffixCountDown">Sekunden beendet</string>
+  <string Field="stilladded">bereits hinzugefügt!</string>
+  <string Field="addtoBlacklist">zur blacklist hinzufügen?</string>
   
-  
+
 </strings>
