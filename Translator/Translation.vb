@@ -16,6 +16,8 @@ Imports Gentle.Framework
         Public Shared line2 = "wird diese Sendung"
         Public Shared prefixCountDown = "in"
         Public Shared suffixCountDown = "sekunden beendet"
+        Public Shared stilladded = "bereits hinzugefügt!"
+        Public Shared addtoBlacklist = "zur blacklist hinzufügen?"
 
         End Class
 End Namespace

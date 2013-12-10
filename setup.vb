@@ -164,7 +164,4 @@ Public Class setup
         TB_Message.Enabled = mySettings.dlgMessageShow
     End Sub
 
-    Private Sub Check_Debug_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Check_Debug.CheckedChanged
-
-    End Sub
 End Class

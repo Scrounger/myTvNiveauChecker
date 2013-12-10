@@ -213,6 +213,9 @@
     <Content Include="MediaPortal\language\myTvNiveauChecker\de.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="MediaPortal\Skin\Titan\mytvhomeServer.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="MediaPortal\Skin\Titan\Media\icon_myTvNiveauChecker.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -197,8 +197,10 @@ Public Class myTvNiveauChecker
                         If Not _CountDownTimer.Enabled = True Then
                             Try
                                 Dim _test As myTNC = myTNC.Retrieve(_CurrentProgram.Title)
+                                MP_Notify(Translation.stilladded)
                             Catch ex As Exception
                                 MsgBox("add to table?")
+
                             End Try
                         End If
                 End Select
@@ -376,7 +378,7 @@ Public Class myTvNiveauChecker
         CheckTimer(False)
 
         If mySettings.dlgMessageShow = True Then
-            MsgBox(mySettings.dlgMessage)
+            MP_Notify(mySettings.dlgMessage)
         End If
 
         'Action Stop an MP schicken

@@ -38,6 +38,8 @@ Partial Class setup
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.CB_ActionAdd = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Check_ShowDlg = New System.Windows.Forms.CheckBox()
         Me.CB_Action = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -46,8 +48,6 @@ Partial Class setup
         Me.Label6 = New System.Windows.Forms.Label()
         Me.BT_save = New System.Windows.Forms.Button()
         Me.Check_Debug = New System.Windows.Forms.CheckBox()
-        Me.CB_ActionAdd = New System.Windows.Forms.ComboBox()
-        Me.Label8 = New System.Windows.Forms.Label()
         CType(Me.dgvTNC, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -72,7 +72,7 @@ Partial Class setup
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
         Me.dgvTNC.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvTNC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvTNC.Size = New System.Drawing.Size(329, 171)
+        Me.dgvTNC.Size = New System.Drawing.Size(329, 162)
         Me.dgvTNC.TabIndex = 2
         '
         'C_Name
@@ -91,7 +91,7 @@ Partial Class setup
         '
         'TB_Name
         '
-        Me.TB_Name.Location = New System.Drawing.Point(75, 5)
+        Me.TB_Name.Location = New System.Drawing.Point(75, 15)
         Me.TB_Name.Name = "TB_Name"
         Me.TB_Name.Size = New System.Drawing.Size(247, 20)
         Me.TB_Name.TabIndex = 3
@@ -100,14 +100,14 @@ Partial Class setup
         '
         Me.CB_matchRule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_matchRule.FormattingEnabled = True
-        Me.CB_matchRule.Location = New System.Drawing.Point(75, 33)
+        Me.CB_matchRule.Location = New System.Drawing.Point(75, 43)
         Me.CB_matchRule.Name = "CB_matchRule"
         Me.CB_matchRule.Size = New System.Drawing.Size(151, 21)
         Me.CB_matchRule.TabIndex = 29
         '
         'BT_Add
         '
-        Me.BT_Add.Location = New System.Drawing.Point(241, 31)
+        Me.BT_Add.Location = New System.Drawing.Point(241, 41)
         Me.BT_Add.Name = "BT_Add"
         Me.BT_Add.Size = New System.Drawing.Size(81, 23)
         Me.BT_Add.TabIndex = 30
@@ -117,7 +117,7 @@ Partial Class setup
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(3, 8)
+        Me.Label1.Location = New System.Drawing.Point(3, 18)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(38, 13)
         Me.Label1.TabIndex = 31
@@ -126,7 +126,7 @@ Partial Class setup
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(3, 36)
+        Me.Label2.Location = New System.Drawing.Point(3, 46)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(62, 13)
         Me.Label2.TabIndex = 32
@@ -187,9 +187,9 @@ Partial Class setup
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(3, 187)
+        Me.Panel1.Location = New System.Drawing.Point(3, 178)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(329, 60)
+        Me.Panel1.Size = New System.Drawing.Size(329, 69)
         Me.Panel1.TabIndex = 38
         '
         'GroupBox2
@@ -205,11 +205,29 @@ Partial Class setup
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.TB_Message)
         Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 335)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 340)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(335, 121)
         Me.GroupBox2.TabIndex = 38
         Me.GroupBox2.TabStop = False
+        '
+        'CB_ActionAdd
+        '
+        Me.CB_ActionAdd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CB_ActionAdd.FormattingEnabled = True
+        Me.CB_ActionAdd.Location = New System.Drawing.Point(121, 94)
+        Me.CB_ActionAdd.Name = "CB_ActionAdd"
+        Me.CB_ActionAdd.Size = New System.Drawing.Size(204, 21)
+        Me.CB_ActionAdd.TabIndex = 43
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(6, 97)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(81, 13)
+        Me.Label8.TabIndex = 42
+        Me.Label8.Text = "add to blacklist:"
         '
         'Check_ShowDlg
         '
@@ -269,7 +287,7 @@ Partial Class setup
         '
         'BT_save
         '
-        Me.BT_save.Location = New System.Drawing.Point(266, 492)
+        Me.BT_save.Location = New System.Drawing.Point(266, 465)
         Me.BT_save.Name = "BT_save"
         Me.BT_save.Size = New System.Drawing.Size(81, 23)
         Me.BT_save.TabIndex = 39
@@ -279,37 +297,19 @@ Partial Class setup
         'Check_Debug
         '
         Me.Check_Debug.AutoSize = True
-        Me.Check_Debug.Location = New System.Drawing.Point(15, 496)
+        Me.Check_Debug.Location = New System.Drawing.Point(15, 469)
         Me.Check_Debug.Name = "Check_Debug"
         Me.Check_Debug.Size = New System.Drawing.Size(56, 17)
         Me.Check_Debug.TabIndex = 40
         Me.Check_Debug.Text = "debug"
         Me.Check_Debug.UseVisualStyleBackColor = True
         '
-        'CB_ActionAdd
-        '
-        Me.CB_ActionAdd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CB_ActionAdd.FormattingEnabled = True
-        Me.CB_ActionAdd.Location = New System.Drawing.Point(121, 94)
-        Me.CB_ActionAdd.Name = "CB_ActionAdd"
-        Me.CB_ActionAdd.Size = New System.Drawing.Size(204, 21)
-        Me.CB_ActionAdd.TabIndex = 43
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(6, 97)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(81, 13)
-        Me.Label8.TabIndex = 42
-        Me.Label8.Text = "add to blacklist:"
-        '
         'setup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(357, 527)
+        Me.ClientSize = New System.Drawing.Size(357, 496)
         Me.Controls.Add(Me.Check_Debug)
         Me.Controls.Add(Me.BT_save)
         Me.Controls.Add(Me.GroupBox2)
