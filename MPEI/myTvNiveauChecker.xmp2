@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Version>2.0</Version>
+  <Groups>
+    <Items>
+      <GroupItem Name="Plugin">
+        <ParentGroup />
+        <DisplayName>Plugin</DisplayName>
+        <DefaulChecked>true</DefaulChecked>
+        <Description>Plugin</Description>
+        <Files>
+          <Items>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\bin\Debug\myTvNiveauChecker.dll</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{d82571ba-8f46-446e-b22f-86d7786ca7ad}-myTvNiveauChecker.dll</ZipFileName>
+              <DestinationFilename>%Plugins%\process\myTvNiveauChecker.dll</DestinationFilename>
+            </FileItem>
+          </Items>
+        </Files>
+      </GroupItem>
+      <GroupItem Name="language">
+        <ParentGroup />
+        <DisplayName>language</DisplayName>
+        <DefaulChecked>true</DefaulChecked>
+        <Description>language</Description>
+        <Files>
+          <Items>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\bin\Debug\MediaPortal\language\myTvNiveauChecker\de.xml</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{8c9f8bca-8451-4dbe-b362-b6a6e63704da}-de.xml</ZipFileName>
+              <DestinationFilename>%Language%\myTvNiveauChecker\de.xml</DestinationFilename>
+            </FileItem>
+          </Items>
+        </Files>
+      </GroupItem>
+      <GroupItem Name="Skin Media">
+        <DisplayName>Skin Media</DisplayName>
+        <DefaulChecked>true</DefaulChecked>
+        <Description>Skin Media</Description>
+        <Files>
+          <Items>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\bin\Debug\MediaPortal\Skin\Titan\Media\icon_myTvNiveauChecker.png</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{2d9af983-1d09-428d-ad6c-d5603c72e034}-icon_myTvNiveauChecker.png</ZipFileName>
+              <DestinationFilename>%Skin%\Titan\Media\icon_myTvNiveauChecker.png</DestinationFilename>
+            </FileItem>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\bin\Debug\MediaPortal\Skin\Titan\Media\myTvNiveauChecker.Fullscrenn.BG.png</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{51b6080d-583b-4f5a-88da-ca3ea8937c85}-myTvNiveauChecker.Fullscrenn.BG.png</ZipFileName>
+              <DestinationFilename>%Skin%\Titan\Media\myTvNiveauChecker.Fullscrenn.BG.png</DestinationFilename>
+            </FileItem>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\bin\Debug\MediaPortal\Skin\Titan\Media\icon_myTvNiveauChecker.png</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{2a3e43af-7bc5-4298-89c8-49be934f9100}-icon_myTvNiveauChecker.png</ZipFileName>
+              <DestinationFilename>%Skin%\DefaultWide\Media\icon_myTvNiveauChecker.png</DestinationFilename>
+            </FileItem>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\bin\Debug\MediaPortal\Skin\Titan\Media\myTvNiveauChecker.Fullscrenn.BG.png</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{5b9ba8e6-45ef-49f8-bbc1-e6c62f0cec13}-myTvNiveauChecker.Fullscrenn.BG.png</ZipFileName>
+              <DestinationFilename>%Skin%\DefaultWide\Media\myTvNiveauChecker.Fullscrenn.BG.png</DestinationFilename>
+            </FileItem>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\bin\Debug\MediaPortal\Skin\Titan\Media\icon_myTvNiveauChecker.png</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{45171e60-4513-493f-95f7-f5568378dfa3}-icon_myTvNiveauChecker.png</ZipFileName>
+              <DestinationFilename>%Skin%\Default\Media\icon_myTvNiveauChecker.png</DestinationFilename>
+            </FileItem>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\bin\Debug\MediaPortal\Skin\Titan\Media\myTvNiveauChecker.Fullscrenn.BG.png</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{509bef0b-664a-4e97-aa82-7399c5e126eb}-myTvNiveauChecker.Fullscrenn.BG.png</ZipFileName>
+              <DestinationFilename>%Skin%\Default\Media\myTvNiveauChecker.Fullscrenn.BG.png</DestinationFilename>
+            </FileItem>
+          </Items>
+        </Files>
+      </GroupItem>
+      <GroupItem Name="Skin Mod: Titan">
+        <ParentGroup />
+        <DisplayName>Skin Mod: Titan</DisplayName>
+        <DefaulChecked>true</DefaulChecked>
+        <Description>Skin Mod: Titan
+</Description>
+        <Files>
+          <Items>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\bin\Debug\MediaPortal\Skin\Titan\mytvFullScreen.xml</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{59d7ead5-6dc2-4d9d-a0c0-db41ef766e05}-mytvFullScreen.xml</ZipFileName>
+              <DestinationFilename>%Skin%\Titan\mytvFullScreen.xml</DestinationFilename>
+            </FileItem>
+            <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+              <Param1 />
+              <UpdateOption>OverwriteIfOlder</UpdateOption>
+              <LocalFileName>..\bin\Debug\MediaPortal\Skin\Titan\mytvhomeServer.xml</LocalFileName>
+              <ZipFileName>Installer{CopyFile}\{6a20f9a6-77eb-4b88-9cd0-13d033ec0a79}-mytvhomeServer.xml</ZipFileName>
+              <DestinationFilename>%Skin%\Titan\mytvhomeServer.xml</DestinationFilename>
+            </FileItem>
+          </Items>
+        </Files>
+      </GroupItem>
+    </Items>
+  </Groups>
+  <Sections>
+    <Items>
+      <SectionItem Guid="36966be8-adb5-4499-aa28-8cea3cd77bdd" Name="Welcome Screen" ConditionGroup="">
+        <Params>
+          <Items>
+            <SectionParam Name="Header text">
+              <Value>Welcome to the Extension Installer for [Name]</Value>
+              <ValueType>String</ValueType>
+              <Description />
+            </SectionParam>
+            <SectionParam Name="Description">
+              <Value>This will install [Name] version [Version] on your computer.
+It is recommended that you close all other applications before continuing.
+Click Next to continue or Cancel to exit Setup.</Value>
+              <ValueType>String</ValueType>
+              <Description />
+            </SectionParam>
+            <SectionParam Name="Left part image">
+              <Value />
+              <ValueType>File</ValueType>
+              <Description />
+            </SectionParam>
+            <SectionParam Name="Header image">
+              <Value>..\bin\Debug\MediaPortal\Skin\Titan\Media\icon_myTvNiveauChecker.png</Value>
+              <ValueType>File</ValueType>
+              <Description>Image in upper right part</Description>
+            </SectionParam>
+          </Items>
+        </Params>
+        <Actions>
+          <Items />
+        </Actions>
+        <IncludedGroups />
+        <PanelName>Welcome Screen</PanelName>
+        <WizardButtonsEnum>NextCancel</WizardButtonsEnum>
+      </SectionItem>
+      <SectionItem Guid="0a4fc011-3b33-4a79-9f7c-a860e3065a50" Name="Tree View Selector" ConditionGroup="">
+        <Params>
+          <Items>
+            <SectionParam Name="Header Title">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Header title</Description>
+            </SectionParam>
+            <SectionParam Name="Header description">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Description of section, shown in under section title</Description>
+            </SectionParam>
+            <SectionParam Name="Header image">
+              <Value>..\bin\Debug\MediaPortal\Skin\Titan\Media\icon_myTvNiveauChecker.png</Value>
+              <ValueType>File</ValueType>
+              <Description>Image in upper right part</Description>
+            </SectionParam>
+            <SectionParam Name="Description ">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Description of this operation</Description>
+            </SectionParam>
+          </Items>
+        </Params>
+        <Actions>
+          <Items />
+        </Actions>
+        <IncludedGroups>
+          <string>Skin Mod: Titan</string>
+        </IncludedGroups>
+        <PanelName>Tree View Selector</PanelName>
+        <WizardButtonsEnum>BackNextCancel</WizardButtonsEnum>
+      </SectionItem>
+      <SectionItem Guid="1f5d138e-1dc2-4091-bf9c-df0fc0e58e7e" Name="Install Section" ConditionGroup="">
+        <Params>
+          <Items>
+            <SectionParam Name="Header Title">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Header title</Description>
+            </SectionParam>
+            <SectionParam Name="Header description">
+              <Value />
+              <ValueType>String</ValueType>
+              <Description>Description of section, shown in under section title</Description>
+            </SectionParam>
+            <SectionParam Name="Header image">
+              <Value>..\bin\Debug\MediaPortal\Skin\Titan\Media\icon_myTvNiveauChecker.png</Value>
+              <ValueType>File</ValueType>
+              <Description>Image in upper right part</Description>
+            </SectionParam>
+          </Items>
+        </Params>
+        <Actions>
+          <Items>
+            <ActionItem Name="InstallFiles" ActionType="InstallFiles" ConditionGroup="Plugin">
+              <Params>
+                <Items />
+              </Params>
+              <ExecuteLocation>AfterPanelShow</ExecuteLocation>
+            </ActionItem>
+            <ActionItem Name="InstallFiles" ActionType="InstallFiles" ConditionGroup="language">
+              <Params>
+                <Items />
+              </Params>
+              <ExecuteLocation>AfterPanelShow</ExecuteLocation>
+            </ActionItem>
+            <ActionItem Name="InstallFiles" ActionType="InstallFiles" ConditionGroup="Skin Media">
+              <Params>
+                <Items />
+              </Params>
+              <ExecuteLocation>AfterPanelShow</ExecuteLocation>
+            </ActionItem>
+            <ActionItem Name="InstallFiles" ActionType="InstallFiles" ConditionGroup="Skin Mod: Titan">
+              <Params>
+                <Items />
+              </Params>
+              <ExecuteLocation>AfterPanelShow</ExecuteLocation>
+            </ActionItem>
+          </Items>
+        </Actions>
+        <IncludedGroups />
+        <PanelName>Install Section</PanelName>
+        <WizardButtonsEnum>Next</WizardButtonsEnum>
+      </SectionItem>
+      <SectionItem Guid="be0543a2-8511-4527-9977-36faca5a0246" Name="Setup Complete" ConditionGroup="">
+        <Params>
+          <Items>
+            <SectionParam Name="Header text">
+              <Value>The Extension Installer Wizard has successfully installed [Name].</Value>
+              <ValueType>String</ValueType>
+              <Description />
+            </SectionParam>
+            <SectionParam Name="Left part image">
+              <Value />
+              <ValueType>File</ValueType>
+              <Description />
+            </SectionParam>
+            <SectionParam Name="Show radio buttons">
+              <Value />
+              <ValueType>Bool</ValueType>
+              <Description>Use radiobutton in place of combobox</Description>
+            </SectionParam>
+            <SectionParam Name="Header image">
+              <Value>..\bin\Debug\MediaPortal\Skin\Titan\Media\icon_myTvNiveauChecker.png</Value>
+              <ValueType>File</ValueType>
+              <Description>Image in upper right part</Description>
+            </SectionParam>
+          </Items>
+        </Params>
+        <Actions>
+          <Items />
+        </Actions>
+        <IncludedGroups />
+        <PanelName>Setup Complete</PanelName>
+        <WizardButtonsEnum>Finish</WizardButtonsEnum>
+      </SectionItem>
+    </Items>
+  </Sections>
+  <Dependencies>
+    <Items>
+      <DependencyItem>
+        <Type>MediaPortal</Type>
+        <Id />
+        <MinVersion>
+          <Major>1</Major>
+          <Minor>1</Minor>
+          <Build>6</Build>
+          <Revision>27644</Revision>
+        </MinVersion>
+        <MaxVersion>
+          <Major>1</Major>
+          <Minor>1</Minor>
+          <Build>6</Build>
+          <Revision>27644</Revision>
+        </MaxVersion>
+        <WarnOnly>false</WarnOnly>
+        <Message>requires MediaPortal version 1.1.6.27644 to 1.1.6.27644.</Message>
+        <Name>MediaPortal</Name>
+      </DependencyItem>
+    </Items>
+  </Dependencies>
+  <PluginDependencies>
+    <Items />
+  </PluginDependencies>
+  <GeneralInfo>
+    <Name>my TvNiveauChecker</Name>
+    <Id>ddcb067a-3cc4-48c5-b0e3-a4730acfb8a7</Id>
+    <Author>Scrounger</Author>
+    <HomePage>http://wiki.team-mediaportal.com/1_MEDIAPORTAL_1/17_Extensions/3_Plugins/my_TvNiveauChecker</HomePage>
+    <ForumPage>http://forum.team-mediaportal.com/threads/my-tvniveauchecker.123244/</ForumPage>
+    <UpdateUrl />
+    <Version>
+      <Major>0</Major>
+      <Minor>8</Minor>
+      <Build>4</Build>
+      <Revision>5</Revision>
+    </Version>
+    <ExtensionDescription>my TvNiveauChecker is a little MediaPortal process plugin that forbidd watching tv program defined by users. Or more precisley it gives your Tv plugin a bit more character ;-)
+
+The user can define names, that will be stored in the MediaPortal database. At Tv start or channel changing the plugin chekcs if the current program title match (exact or contains) with the stored "blacklisted" names in the database. If the match is true tv playback will stop after a user defined countdown.</ExtensionDescription>
+    <VersionDescription />
+    <DevelopmentStatus>Stable</DevelopmentStatus>
+    <OnlineLocation />
+    <ReleaseDate>2013-12-31T21:22:38</ReleaseDate>
+    <Tags />
+    <Location>D:\Projekte\myTvNiveauChecker\MPEI\myTvNiveauChecker_[Version].mpe1</Location>
+    <Params>
+      <Items>
+        <SectionParam Name="Icon">
+          <Value>..\ConfigIcons\Config.png</Value>
+          <ValueType>File</ValueType>
+          <Description>The icon file of the package (jpg,png,bmp)</Description>
+        </SectionParam>
+        <SectionParam Name="Online Icon">
+          <Value />
+          <ValueType>String</ValueType>
+          <Description>The icon file of the package stored online (jpg,png,bmp)</Description>
+        </SectionParam>
+        <SectionParam Name="Configuration file">
+          <Value />
+          <ValueType>Template</ValueType>
+          <Description>The file used to configure the extension.
+ If it has .exe extension the will be executed.
+ If it has .dll extension it's started like MP plugin configuration.</Description>
+        </SectionParam>
+        <SectionParam Name="Online Screenshots">
+          <Value />
+          <ValueType>String</ValueType>
+          <Description>Online stored screenshot urls separated by ; </Description>
+        </SectionParam>
+        <SectionParam Name="Force to uninstall on update">
+          <Value>YES</Value>
+          <ValueType>Bool</ValueType>
+          <Description>Show dialog and force to uninstall previous version when updating an extension. Should only be disabled if you are using an NSIS/MSI installer.</Description>
+        </SectionParam>
+      </Items>
+    </Params>
+  </GeneralInfo>
+  <UniqueFileList>
+    <Items>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\bin\Debug\myTvNiveauChecker.dll</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{d82571ba-8f46-446e-b22f-86d7786ca7ad}-myTvNiveauChecker.dll</ZipFileName>
+        <DestinationFilename>%Plugins%\process\myTvNiveauChecker.dll</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\bin\Debug\MediaPortal\language\myTvNiveauChecker\de.xml</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{8c9f8bca-8451-4dbe-b362-b6a6e63704da}-de.xml</ZipFileName>
+        <DestinationFilename>%Language%\myTvNiveauChecker\de.xml</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="true" Modified="false">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\bin\Debug\MediaPortal\Skin\Titan\Media\icon_myTvNiveauChecker.png</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{2d9af983-1d09-428d-ad6c-d5603c72e034}-icon_myTvNiveauChecker.png</ZipFileName>
+        <DestinationFilename>%Skin%\Titan\Media\icon_myTvNiveauChecker.png</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="false">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\bin\Debug\MediaPortal\Skin\Titan\Media\myTvNiveauChecker.Fullscrenn.BG.png</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{51b6080d-583b-4f5a-88da-ca3ea8937c85}-myTvNiveauChecker.Fullscrenn.BG.png</ZipFileName>
+        <DestinationFilename>%Skin%\Titan\Media\myTvNiveauChecker.Fullscrenn.BG.png</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\bin\Debug\MediaPortal\Skin\Titan\mytvFullScreen.xml</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{59d7ead5-6dc2-4d9d-a0c0-db41ef766e05}-mytvFullScreen.xml</ZipFileName>
+        <DestinationFilename>%Skin%\Titan\mytvFullScreen.xml</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="false" Modified="true">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\bin\Debug\MediaPortal\Skin\Titan\mytvhomeServer.xml</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{6a20f9a6-77eb-4b88-9cd0-13d033ec0a79}-mytvhomeServer.xml</ZipFileName>
+        <DestinationFilename>%Skin%\Titan\mytvhomeServer.xml</DestinationFilename>
+      </FileItem>
+      <FileItem InstallType="CopyFile" SystemFile="true" Modified="true">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName>..\ConfigIcons\Config.png</LocalFileName>
+        <ZipFileName>Installer{CopyFile}\{16da09c0-fdf8-4868-832d-1848264a6e73}-Config.png</ZipFileName>
+        <DestinationFilename />
+      </FileItem>
+    </Items>
+  </UniqueFileList>
+  <ProjectSettings>
+    <FolderGroups>
+      <FolderGroup InstallType="CopyFile" SystemFile="false" Modified="true">
+        <Param1 />
+        <UpdateOption>OverwriteIfOlder</UpdateOption>
+        <LocalFileName />
+        <ZipFileName>Installer{CopyFile}\{ede2dfdc-7407-4d12-a7d6-2b04a151f676}-</ZipFileName>
+        <DestinationFilename>%Skin%\Default\Media</DestinationFilename>
+        <Folder>..\bin\Debug\MediaPortal\Skin\Titan\Media</Folder>
+        <Group>Skin Media</Group>
+        <Recursive>true</Recursive>
+      </FolderGroup>
+    </FolderGroups>
+    <ProjectFilename>myTvNiveauChecker.xmp2</ProjectFilename>
+    <UpdatePath1>D:\Projekte\myTvNiveauChecker\MPEI\update.xml</UpdatePath1>
+    <UpdatePath2 />
+    <UpdatePath3 />
+  </ProjectSettings>
+  <IsSkin>false</IsSkin>
+</PackageClass>
