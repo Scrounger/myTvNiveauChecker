@@ -301,9 +301,9 @@ Click Next to continue or Cancel to exit Setup.</Value>
     <Name>my TvNiveauChecker</Name>
     <Id>ddcb067a-3cc4-48c5-b0e3-a4730acfb8a7</Id>
     <Author>Scrounger</Author>
-    <HomePage>http://wiki.team-mediaportal.com/1_MEDIAPORTAL_1/17_Extensions/3_Plugins/my_TvNiveauChecker</HomePage>
+    <HomePage>https://code.google.com/p/mytvniveauchecker/</HomePage>
     <ForumPage>http://forum.team-mediaportal.com/threads/my-tvniveauchecker.123244/</ForumPage>
-    <UpdateUrl />
+    <UpdateUrl>https://mytvniveauchecker.googlecode.com/git/MPEI/update.xml</UpdateUrl>
     <Version>
       <Major>0</Major>
       <Minor>8</Minor>
@@ -315,10 +315,10 @@ Click Next to continue or Cancel to exit Setup.</Value>
 The user can define names, that will be stored in the MediaPortal database. At Tv start or channel changing the plugin chekcs if the current program title match (exact or contains) with the stored "blacklisted" names in the database. If the match is true tv playback will stop after a user defined countdown.</ExtensionDescription>
     <VersionDescription />
     <DevelopmentStatus>Stable</DevelopmentStatus>
-    <OnlineLocation />
-    <ReleaseDate>2013-12-31T21:22:38</ReleaseDate>
+    <OnlineLocation>https://mytvniveauchecker.googlecode.com/git/MPEI/myTvNiveauChecker_0.8.4.5_MP1.6.mpe1</OnlineLocation>
+    <ReleaseDate>2014-01-06T21:22:38</ReleaseDate>
     <Tags />
-    <Location>D:\Projekte\myTvNiveauChecker\MPEI\myTvNiveauChecker_[Version].mpe1</Location>
+    <Location>D:\Projekte\myTvNiveauChecker\MPEI\myTvNiveauChecker_[Version]_MP1.6.mpe1</Location>
     <Params>
       <Items>
         <SectionParam Name="Icon">
@@ -399,7 +399,7 @@ The user can define names, that will be stored in the MediaPortal database. At T
         <Param1 />
         <UpdateOption>OverwriteIfOlder</UpdateOption>
         <LocalFileName>..\ConfigIcons\Config.png</LocalFileName>
-        <ZipFileName>Installer{CopyFile}\{16da09c0-fdf8-4868-832d-1848264a6e73}-Config.png</ZipFileName>
+        <ZipFileName>Installer{CopyFile}\{549a5368-1d69-429b-9981-576be8fe1f19}-Config.png</ZipFileName>
         <DestinationFilename />
       </FileItem>
     </Items>

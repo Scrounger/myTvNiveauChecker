@@ -66,47 +66,30 @@
         </Items>
       </Dependencies>
       <PluginDependencies>
-        <Items>
-          <PluginDependencyItem AssemblyName="myTvNiveauChecker.dll">
-            <CompatibleVersion>
-              <Items>
-                <CompatibleVersionItem>
-                  <MinRequiredVersion>1.1.6.27644</MinRequiredVersion>
-                  <DesignedForVersion>1.4.0.0</DesignedForVersion>
-                </CompatibleVersionItem>
-              </Items>
-            </CompatibleVersion>
-            <SubSystemsUsed>
-              <Items>
-                <SubSystemItem Name="MP.Config" />
-                <SubSystemItem Name="MP.SkinEngine" />
-              </Items>
-            </SubSystemsUsed>
-          </PluginDependencyItem>
-        </Items>
+        <Items />
       </PluginDependencies>
       <GeneralInfo>
         <Name>my TvNiveauChecker</Name>
         <Id>ddcb067a-3cc4-48c5-b0e3-a4730acfb8a7</Id>
         <Author>Scrounger</Author>
-        <HomePage>http://wiki.team-mediaportal.com/1_MEDIAPORTAL_1/17_Extensions/3_Plugins/my_TvNiveauChecker</HomePage>
+        <HomePage>https://code.google.com/p/mytvniveauchecker/</HomePage>
         <ForumPage>http://forum.team-mediaportal.com/threads/my-tvniveauchecker.123244/</ForumPage>
-        <UpdateUrl />
+        <UpdateUrl>https://mytvniveauchecker.googlecode.com/git/MPEI/update.xml</UpdateUrl>
         <Version>
           <Major>0</Major>
           <Minor>8</Minor>
-          <Build>3</Build>
-          <Revision>9</Revision>
+          <Build>4</Build>
+          <Revision>5</Revision>
         </Version>
         <ExtensionDescription>my TvNiveauChecker is a little MediaPortal process plugin that forbidd watching tv program defined by users. Or more precisley it gives your Tv plugin a bit more character ;-)
 
 The user can define names, that will be stored in the MediaPortal database. At Tv start or channel changing the plugin chekcs if the current program title match (exact or contains) with the stored "blacklisted" names in the database. If the match is true tv playback will stop after a user defined countdown.</ExtensionDescription>
         <VersionDescription />
         <DevelopmentStatus>Stable</DevelopmentStatus>
-        <OnlineLocation />
-        <ReleaseDate>2013-12-11T21:22:38.2552527+01:00</ReleaseDate>
+        <OnlineLocation>https://mytvniveauchecker.googlecode.com/git/MPEI/myTvNiveauChecker_0.8.4.5_MP1.6.mpe1</OnlineLocation>
+        <ReleaseDate>2014-01-06T21:22:38</ReleaseDate>
         <Tags />
-        <Location>D:\Projekte\myTvNiveauChecker\MPEI\myTvNiveauChecker_[Version].mpe1</Location>
+        <Location>D:\Projekte\myTvNiveauChecker\MPEI\myTvNiveauChecker_[Version]_MP1.6.mpe1</Location>
         <Params>
           <Items>
             <SectionParam Name="Online Icon">
