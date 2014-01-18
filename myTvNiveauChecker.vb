@@ -242,19 +242,25 @@ Public Class myTvNiveauChecker
 
                     'Program laden
                     Dim _channel = Channel.Retrieve(user.IdChannel)
-                    Dim _program = _channel.GetProgramAt(Now)
 
-                    If Not _program.IdProgram = _idCurrentProgram Then
-                        _idCurrentProgram = _program.IdProgram
-                        _CurrentEndTime = _program.EndTime
+                    Try
+                        Dim _program = _channel.GetProgramAt(Now)
 
-                        MyLog.Info("current program: {0} ({1})", _program.Title, _channel.DisplayName)
-                        _CurrentProgram = _program
+                        If Not _program.IdProgram = _idCurrentProgram Then
+                            _idCurrentProgram = _program.IdProgram
+                            _CurrentEndTime = _program.EndTime
 
-                        CheckTimer(True)
+                            MyLog.Info("current program: {0} ({1})", _program.Title, _channel.DisplayName)
+                            _CurrentProgram = _program
 
-                    End If
-                    Exit For
+                            CheckTimer(True)
+
+                        End If
+                        Exit For
+
+                    Catch ex As Exception
+                        MyLog.Warn("current program has no epg data! - {0}", _channel.DisplayName)
+                    End Try
                 End If
             Next
         End If
